@@ -43,9 +43,56 @@ int main(){
         }while(j <= 3);
     }
 
+    printf("\n--------Desafio: nível mestre--------");
+    
+    printf("\nTorre %d Passos nível mestre \n", torre_passos);
+    Movimentacao_Torre(torre_passos);
+
+    printf("\nBispo %d Passos nível mestre \n", bispo_passos);
+    Movimentacao_Bispo(bispo_passos*2);
+
+    printf("\nRainha %d Passos nível mestre \n", rainha_passos);
+    Movimentacao_Rainha(rainha_passos);
+
+    printf("\nCavalo %d Passos nível mestre \n", cavalo_passos);
+    for ( int i = 1, j = 0; i <= cavalo_passos*3; i++, j = (i % 3 == 0) ? 1 : 0 ){
+        if (j == 1){
+            printf("Direita\n");
+            continue;
+        }else{
+            printf("Cima-");
+        }
+    }
+
     return 0;
 
 }
+void Movimentacao_Torre(int passos){
+    if (passos > 0){
+        printf("Direita\n");
+        Movimentacao_Torre(--passos);
+    }
+}
 
-// Lógica de Movimentação: O programa deverá implementar a lógica específica do movimento em "L" do Cavalo usando loops aninhados (um loop for e um loop while ou do-while).
-// Saída de Dados: O programa deverá imprimir no console a direção de cada etapa do movimento do Cavalo ("Baixo", "Baixo", "Esquerda"), utilizando o comando printf. Para as outras peças as saídas devem seguir o padrão: printf("Cima\n");, printf("Baixo\n");, printf("Esquerda\n");, printf("Direita\n");. Separe o movimento do Cavalo dos movimentos anteriores com uma linha em branco.
+void Movimentacao_Bispo(int passos){
+    if (passos >= 0){
+        if (passos % 2 == 0){
+            printf("Direita\n");
+        }else{
+            printf("Cima-");
+        }
+        Movimentacao_Bispo(--passos);
+    }
+}
+void Movimentacao_Rainha(int passos){
+    if (passos > 0){
+        printf("Esquerda\n");
+        Movimentacao_Rainha(--passos);
+    }
+}
+
+// Recursividade (Torre, Bispo e Rainha): Implemente funções recursivas para simular o movimento de cada peça, substituindo os loops originais.
+
+// Loops Complexos (Cavalo): Utilize loops aninhados com múltiplas variáveis e/ou condições para simular o movimento do Cavalo em "L" (duas casas para cima e uma para a direita).
+ 
+// Loops Aninhados (Bispo): Utilize loops aninhados para o bispo, sendo o loop mais externo o vertical, e o mais interno o horizontal.
